@@ -886,11 +886,11 @@ export default {
           for(let arg of args){
             result += JSON.stringify(arg) + "\\n";
           }
+          const eventID = 'myEvent'; // You can define your own event ID
+          const data = { msg: result };
+          window.parent.postMessage({ eventID, data }, "*");
         };
         ${js}
-        const eventID = 'myEvent'; // You can define your own event ID
-        const data = { msg: result };
-        window.parent.postMessage({ eventID, data }, "*");
         <\/script>`
       );
       this.$refs.result.contentWindow.document.close();
